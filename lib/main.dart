@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_marketplace/pages/home_page.dart';
+import 'package:flutter/services.dart';
+import 'pages/cart.dart';
+import 'pages/home.dart';
+import 'pages/search.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark));
   runApp(const MyApp());
 }
 
@@ -11,11 +19,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Marketplace',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
+      routes: {
+        HomePage.routeName: (BuildContext context) => const HomePage(),
+        SearchPage.routeName: (BuildContext context) => const SearchPage(),
+        CartPage.routeName: (BuildContext context) => const CartPage(),
+      },
     );
   }
 }
