@@ -8,7 +8,17 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
+          'Cart',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+      body: const SingleChildScrollView(),
     );
   }
 }

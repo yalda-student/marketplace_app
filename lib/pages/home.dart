@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_marketplace/app_data.dart';
 import 'package:flutter_application_marketplace/constants.dart';
+import 'package:flutter_application_marketplace/pages/category.dart';
+import 'package:flutter_application_marketplace/widgets/basket.dart';
 import 'package:flutter_application_marketplace/widgets/search_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,6 +17,7 @@ class HomePage extends StatelessWidget {
     final themeData = Theme.of(context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
           child: SingleChildScrollView(
         child: Padding(
@@ -33,7 +36,7 @@ class HomePage extends StatelessWidget {
                     const SearchBar(),
                     IconButton(
                         onPressed: () {},
-                        icon: const Icon(Icons.shopping_basket))
+                        icon: const ShoppingCartIcon())
                   ],
                 ),
               ),
@@ -162,18 +165,28 @@ class _CategryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(bottom: 4),
-          width: 110,
-          height: 110,
-          child: ClipRRect(
-              child: Image.network(imageUrl, fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(15)),
-        ),
-        Text(title),
-      ],
+    return InkWell(
+      borderRadius: BorderRadius.circular(15),
+      hoverColor: AppConstants.greenTextColor,
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(bottom: 4),
+            width: 110,
+            height: 110,
+            child: ClipRRect(
+                child: Image.network(imageUrl, fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(15)),
+          ),
+          Text(title),
+        ],
+      ),
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          CategoryScreen.routeName,
+          arguments: {'category-name': title},
+        );
+      },
     );
   }
 }
@@ -234,7 +247,7 @@ class _LastProductItem extends StatelessWidget {
                     direction: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, _) =>
-                        const Icon(Icons.star_rate, color: Colors.amber),
+                        const Icon(Icons.star_rate_rounded, color: Colors.amber),
                   )
                 ],
               ),

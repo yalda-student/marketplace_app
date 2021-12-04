@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_marketplace/pages/category.dart';
 import 'pages/cart.dart';
 import 'pages/home.dart';
 import 'pages/search.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         HomePage.routeName: (BuildContext context) => const HomePage(),
         SearchPage.routeName: (BuildContext context) => const SearchPage(),
         CartPage.routeName: (BuildContext context) => const CartPage(),
+        CategoryScreen.routeName: (BuildContext context) => const CategoryScreen()
       },
     );
   }
